@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/flight.png">
+    <title> AirAssit - Your Flight Reservation Assistance Available 24/7 </title>
+</head>
+<body>
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>Complete Your Booking</h3>
+                <button class="close-popup" id="closePopup">&times;</button>
+            </div>
+            <div class="popup-body">
+                <p>Our agents can help you complete your booking with special rates and personalized assistance.</p>
+                <p class="popup-highlight">Call now to secure your reservation!</p>
+                <a href="tel:(866) 226-8997" class="popup-call-button">
+                    <i class="fas fa-phone-alt"></i> Call (866) 226-8997
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Call Button -->
+    <div class="floating-call">
+        <div class="agent-status">
+            <span class="status-indicator online"></span>
+            <span class="status-text">Agent Online</span>
+        </div>
+        <a href="tel:(866) 226-8997" class="call-button">
+            <i class="fas fa-phone-alt"></i> Call Now
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Urgent Flight Changes & Cancellations</h1>
+                <h2>Speak to a Live Agent Now</h2>
+                <p class="urgency">Don't lose your travel investment. Our specialists are standing by to help.</p>
+                <a href="tel:(866) 226-8997" class="cta-button">
+                    <i class="fas fa-headset"></i> Get Immediate Assistance
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Flight Search Form -->
+    <section class="flight-search">
+        <div class="container">
+            <h2>Find Available Flights</h2>
+            <div class="search-form-container">
+                <form id="flightSearchForm" class="search-form">
+                    <div class="form-group">
+                        <label for="tripType">Trip Type</label>
+                        <select id="tripType" name="tripType">
+                            <option value="roundtrip">Round Trip</option>
+                            <option value="oneway">One Way</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="origin">From</label>
+                            <input type="text" id="origin" name="origin" placeholder="City or Airport" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="destination">To</label>
+                            <input type="text" id="destination" name="destination" placeholder="City or Airport" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="departDate">Depart</label>
+                            <input type="date" id="departDate" name="departDate" required>
+                        </div>
+                        
+                        <div class="form-group return-date">
+                            <label for="returnDate">Return</label>
+                            <input type="date" id="returnDate" name="returnDate">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passengers">Passengers</label>
+                            <select id="passengers" name="passengers">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cabinClass">Cabin Class</label>
+                            <select id="cabinClass" name="cabinClass">
+                                <option value="economy">Economy</option>
+                                <option value="premium">Premium Economy</option>
+                                <option value="business">Business</option>
+                                <option value="first">First Class</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="search-button" id="searchFlightsBtn">
+                        <i class="fas fa-search"></i> Search Flights
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Flight Results Section (Initially Hidden) -->
+    <section class="flight-results" id="flightResults">
+        <div class="container">
+            <h2>Available Flight Options</h2>
+            <p class="results-message">We found several options with our partner airlines. Call now to get complete details and special rates!</p>
+            
+            <div class="airline-results">
+                <!-- Results will be dynamically populated -->
+            </div>
+            
+            <div class="call-to-book">
+                <h3>Complete Your Booking by Phone</h3>
+                <p>Our agents can provide you with more options, apply special discounts, and complete your booking instantly.</p>
+                <a href="tel:(866) 226-8997" class="cta-button">
+                    <i class="fas fa-phone-alt"></i> Call to Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Expert Flight Assistance</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Flight Changes</h3>
+                    <p>Need to modify your travel plans? Our specialists can help you make changes quickly and efficiently.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ban"></i>
+                    <h3>Cancellations</h3>
+                    <p>Unexpected change of plans? We'll guide you through the cancellation process to minimize penalties.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h3>Reservation Support</h3>
+                    <p>Questions about your existing reservation? Get answers from our knowledgeable agents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+        <div class="container">
+            <h2>Why Choose Our Service</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>24/7 Availability</h3>
+                    <p>Our agents are available around the clock to assist with your urgent flight needs.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Expert Assistance</h3>
+                    <p>Experienced specialists who understand airline policies and procedures.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Quick Resolution</h3>
+                    <p>We work efficiently to resolve your flight issues in the shortest time possible.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Process</h3>
+                    <p>Your information is handled with the utmost security and confidentiality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Airlines We Work With -->
+    <section class="airlines">
+        <div class="container">
+            <h2>Major Airlines We Assist With</h2>
+            <div class="airline-logos">
+                <div class="airline-logo">Delta</div>
+                <div class="airline-logo">United</div>
+                <div class="airline-logo">Etihad</div>
+                <div class="airline-logo">KLM</div>
+                <div class="airline-logo">Singapore</div>
+                <div class="airline-logo">Lufthansa</div>
+                <div class="airline-logo">Tap Portugal</div>
+                <div class="airline-logo">Turkish</div>
+                <div class="airline-logo">Air Canada</div>
+                <div class="airline-logo">Emirates</div>
+                <div class="airline-logo">Air France</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"When my business trip was suddenly canceled, I needed to change my flight immediately. The agent was incredibly helpful and got everything sorted in minutes!"</p>
+                    <h4>- Michael T.</h4>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"I was worried about the cancellation fees, but the specialist found a solution that saved me hundreds of dollars. Extremely grateful for the expert advice!"</p>
+                    <h4>- Sarah L.</h4>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Had to make last-minute changes to my international flight. One call and everything was resolved. The peace of mind was worth every penny!"</p>
+                    <h4>- Jennifer K.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Urgent Flight Assistance?</h2>
+            <p>Our specialists are standing by to help with your flight changes and cancellations.</p>
+            <p> <a href="tel:(866) 226-8997" class="cta-button large">
+                <i class="fas fa-phone-alt"></i> Call (866) 226-8997 Now
+            </a> </p>
+            <p class="availability">Agents available: Monday - Sunday 9:30am - 11:30pm EST</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Flight Assistance Services. All rights reserved.</p>
+            <p class="disclaimer">This is an independent flight assistance service. We are not affiliated with any airline or airport.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
